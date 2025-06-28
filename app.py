@@ -24,7 +24,7 @@ if len(Instructions) <100:
             stop = ["\n"]
         )
         output = response.choices[0].text"""
-        model = genai.GenerativeModel("gemini-1.5-pro")
+        model = genai.GenerativeModel("Gemini 2.5 Flash")
         prompt = f"Act like my personal chef and give me delicious food suggestion based on the following prompt: {Instructions}"
         response = model.generate_content(prompt,
                 generation_config=genai.types.GenerationConfig(
