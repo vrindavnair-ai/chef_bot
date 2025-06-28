@@ -1,6 +1,7 @@
 #import openai
 import streamlit as st
 import google.generativeai as genai
+#from google.generativeai.types import GenerationConfig
 
 #Auth
 #openai.api_key = st.secrets(["api_key"])
@@ -24,14 +25,14 @@ if len(Instructions) <100:
             stop = ["\n"]
         )
         output = response.choices[0].text"""
-        model = genai.GenerativeModel("Gemini 2.5 Flash")
+        model = genai.GenerativeModel("gemini-1.5-flash")
         prompt = f"Act like my personal chef and give me delicious food suggestion based on the following prompt: {Instructions}"
         response = model.generate_content(prompt,
                 generation_config=genai.types.GenerationConfig(
                 temperature=0.7,
                 max_output_tokens=100
             ))
-        st.info(response)
+        st.info(response.text)
 
 else:
     st.warning(
